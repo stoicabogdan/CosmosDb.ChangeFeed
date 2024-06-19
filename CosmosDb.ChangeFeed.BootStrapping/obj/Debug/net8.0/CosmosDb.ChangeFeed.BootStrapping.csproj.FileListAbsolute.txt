@@ -1,0 +1,5 @@
+C:\Users\stoic\Documents\Personal Projects\CosmosDb.ChangeFeed\CosmosDb.ChangeFeed.BootStrapping\obj\Debug\net8.0\CosmosDb.ChangeFeed.BootStrapping.csproj.AssemblyReference.cache
+C:\Users\stoic\Documents\Personal Projects\CosmosDb.ChangeFeed\CosmosDb.ChangeFeed.BootStrapping\obj\Debug\net8.0\CosmosDb.ChangeFeed.BootStrapping.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\stoic\Documents\Personal Projects\CosmosDb.ChangeFeed\CosmosDb.ChangeFeed.BootStrapping\obj\Debug\net8.0\CosmosDb.ChangeFeed.BootStrapping.AssemblyInfoInputs.cache
+C:\Users\stoic\Documents\Personal Projects\CosmosDb.ChangeFeed\CosmosDb.ChangeFeed.BootStrapping\obj\Debug\net8.0\CosmosDb.ChangeFeed.BootStrapping.AssemblyInfo.cs
+C:\Users\stoic\Documents\Personal Projects\CosmosDb.ChangeFeed\CosmosDb.ChangeFeed.BootStrapping\obj\Debug\net8.0\CosmosDb.ChangeFeed.BootStrapping.csproj.CoreCompileInputs.cache
