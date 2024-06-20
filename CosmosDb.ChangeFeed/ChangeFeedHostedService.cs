@@ -1,6 +1,7 @@
 ﻿using CosmosDb.ChangeFeed.ChangeModels;
 using CosmosDb.ChangeFeed.Configuration;
 using CosmosDb.ChangeFeed.Handlers;
+using Microsoft.ApplicationInsights;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -14,6 +15,7 @@ namespace CosmosDb.ChangeFeed
         private readonly IChangeFeedHandler<RequestAcknowledgedEntity> _changeFeedHandler;
         private readonly CosmosChangeFeedOptions _cosmosChangeFeedOptions;
         private readonly ILogger<ChangeFeedHostedService> _logger;
+        private readonly TelemetryClient _telemetryClient;
         private ChangeFeedProcessor _changeFeedProcessor;
         private ChangeFeedProcessor _changeFeedEstimator;
 
@@ -21,12 +23,14 @@ namespace CosmosDb.ChangeFeed
             CosmosClient cosmosClient,
             IChangeFeedHandler<RequestAcknowledgedEntity> changeFeedHandler,
             IOptions<CosmosChangeFeedOptions> changeFeedOptions,
-            ILogger<ChangeFeedHostedService> logger)
+            ILogger<ChangeFeedHostedService> logger,
+            TelemetryClient telemetryClient)
         {
             _cosmosClient = cosmosClient;
             _changeFeedHandler = changeFeedHandler;
             _cosmosChangeFeedOptions = changeFeedOptions.Value;
             _logger = logger;
+            _telemetryClient = telemetryClient;
         }
 
         public async Task StartAsync(CancellationToken cancellationToken)
@@ -81,7 +85,8 @@ namespace CosmosDb.ChangeFeed
 
         private async Task HandleChangesAsync(IReadOnlyCollection<RequestAcknowledgedEntity> changes, CancellationToken cancellationToken)
         {
-            // Use changes.Count to track all changes that the changefeed picks in telemetry 
+            // Use changes.Count to track all changes that the changefeed picks in telemetry
+            _telemetryClient.GetMetric("RequestAcknowledgedChanges").TrackValue(changes.Count);
 
             await _changeFeedHandler.HandleAsync(changes, cancellationToken);
         }
@@ -89,6 +94,7 @@ namespace CosmosDb.ChangeFeed
         private async Task HandleEstimationAsync(long estimation, CancellationToken cancellationToken)
         {
             // Use estimation to track remaing changes 
+            _telemetryClient.GetMetric("RequestAcknowledgedRemaining").TrackValue(estimation);
 
             await Task.Delay(0, cancellationToken);
         }

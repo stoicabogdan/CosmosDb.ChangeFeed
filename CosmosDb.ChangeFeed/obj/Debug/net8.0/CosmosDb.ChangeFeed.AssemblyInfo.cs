@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CosmosDb.ChangeFeed")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea7b1529dd4a49d6c543bb021b93fa0b998f0605")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+528abdd00b459ff5c0b8800f2e86cd23688307d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("CosmosDb.ChangeFeed")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CosmosDb.ChangeFeed")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
